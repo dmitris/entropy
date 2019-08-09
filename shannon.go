@@ -37,11 +37,10 @@ func (s *shannon) Value() float64 {
 	for _, count := range s.frequencies {
 		if count > 0 {
 			pval := float64(count) / float64(s.total)
-			pinv := float64(s.total) / float64(count)
-			entropy += pval * math.Log2(pinv)
+			entropy += pval * math.Log2(pval)
 		}
 	}
-	return entropy
+	return -1 * entropy
 }
 
 func NewShannonEstimator() Estimator {
